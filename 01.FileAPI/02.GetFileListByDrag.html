@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>WebJ2EE FileAPI</title>
+	<script type="text/javascript" src="../jquery-1.12.4.js"></script>
+</head>
+<body>
+	<form>
+		<input id="myfile" type="file" name="myfile" multiple></input>
+	</form>
+
+	<textarea id="myFileDrop"></textarea>
+
+	<script type="text/javascript">
+		$("#myfile").bind("change", function(e){
+			var files = this.files;
+			console.dir(files);
+		});
+
+		$("#myFileDrop").bind("dragover", function(e){
+			$(this).css("border", "2px solid blue");
+		});
+		$("#myFileDrop").bind("drop", function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+
+			$(this).css("border", "1px solid black")
+
+		    var files = e.originalEvent.dataTransfer.files;
+		    console.dir(files);
+		});
+
+		
+		  
+	</script>
+</body>
+</html>

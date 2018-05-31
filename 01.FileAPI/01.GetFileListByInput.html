@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WebJ2EE FileAPI</title>
+	<script type="text/javascript" src="../jquery-1.12.4.js"></script>
+</head>
+<body>
+
+	<form>
+		<input id="myfile" type="file" multiple></input>
+	</form>
+
+	<script type="text/javascript">
+		$("#myfile").bind("change", function(e){
+			let fileList = this.files;
+			console.dir(fileList);
+			
+			for(let file of fileList ){
+				console.log(`${file.name}: ${Math.round(file.size/1024,0)}KB;`);
+			}
+		});	  
+	</script>
+</body>
+</html>
