@@ -20,7 +20,7 @@
 			<input type="reset" value="reset"/>
 		</form>
 		
-		<iframe name="formSubmitResult" style="width:450px; height:200px;"></iframe>
+		<iframe name="formSubmitResult" style="width:750px; height:200px;"></iframe>
 		
 		<script>
 			function fileUploadSuccess(params){
