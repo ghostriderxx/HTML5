@@ -22,7 +22,11 @@ public class HandleCORS extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
+		response.setHeader("Access-Control-Allow-Credentials", "true");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write("Hello WebJ2EE!");
 	}
-
 }
