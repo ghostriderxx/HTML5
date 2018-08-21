@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "01.PrototypeChainInheritance": "npx babel-node ./src/PrototypeChainInheritance.js"
+    "ClassInheritance": "npx babel-node ./src/ClassInheritance.js"
   },
   "author": "",
   "license": "ISC",
