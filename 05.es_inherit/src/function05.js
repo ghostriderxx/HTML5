@@ -23,7 +23,8 @@ Car.prototype = {
 
 const benz = new Car("Benz");
 
-console.log(benz.constructor === Car); // true
-console.log(benz.constructor.prototype === Car.prototype); // true
+console.log(benz.constructor === Car); // false
+console.log(benz.constructor.prototype === Car.prototype); // false
+
 console.log(benz.constructor === Object); // true
 console.log(benz.constructor.prototype === Object.prototype); //true
