@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="UTF-8"/></head><body><script>
+"use strict";
+
+// 基类 Person
+function Person(name){
+    this.name = name;
+}
+Person.prototype.myName = function () {
+    return this.name;
+};
+
+// 子类 Employee
+function Employee(name){
+    Person.call(this, name);
+}
+Employee.prototype = new Person();
+Employee.prototype.constructor = Employee;
+
+// 构造一个 Employee 实例对象
+const john = new Employee("John");
+
+console.log(john instanceof Employee); // true
+console.log(john instanceof Person); // true
+
+console.log(Employee.prototype.isPrototypeOf(john)); // true
+console.log(Person.prototype.isPrototypeOf(john)) // true
+
+</script></body></html>
