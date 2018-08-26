@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,7 +16,7 @@
 		<script>
 		$("#myMultiFileUpload").uploadify({
 	        swf           	: './uploadify/uploadify.swf', 	// 指明flash插件路径
-	        uploader      	: './HandleUpload', 			// 文件上传请求地址
+	        uploader      	: './HandleUpload_CommonsFileUpload', 			// 文件上传请求地址
 	        width         	: 120,
 	        height        	: 30,
 	        fileObjName	  	: "myfile", 					// 相当于 <input type="file" name="myfile"
