@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"/></head><body>
+<div id="originText" style="width:300px; height:100px;">
+为了防止这个世界被破坏
+为了保护世界的和平
+贯彻爱与真实的邪恶
+可爱又迷人的反派角色
+武藏
+小次朗
+我们是穿梭在银河的火箭队
+白洞 白色的明天在等着我们
+就是这样 喵！！
+</div>
+<hr/>
+<input type="text" id="startIndex" onchange="handleChange()"/>
+	<==>
+<input type="text" id="endIndex" onchange="handleChange()"/>
+<script>
+	var originTextObj = document.getElementById("originText");
+	var startIndexObj = document.getElementById("startIndex");
+	var endIndexObj = document.getElementById("endIndex");
+
+	var originTextLength = originTextObj.innerText.length;
+	startIndexObj.value = 0;
+	endIndexObj.value = originTextLength;
+
+    function handleChange(){
+    	var startIndex = Number(startIndexObj.value);
+    	var endIndex = Number(endIndexObj.value);
+
+		var textRangeObj = document.body.createTextRange();
+		textRangeObj.moveToElementText(originTextObj);
+        var t = textRangeObj.moveStart("character", startIndex);
+        textRangeObj.moveEnd("character", endIndex - originTextLength);
+        textRangeObj.select();
+    }
+</script>
+</body></html>

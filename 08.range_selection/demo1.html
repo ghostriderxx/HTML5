@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<div style="display: flex;flex-direction: row; align-items: center;">
+<textarea style="width:300px; height:200px;">
+为了防止这个世界被破坏
+为了保护世界的和平
+贯彻爱与真实的邪恶
+可爱又迷人的反派角色
+武藏
+小次朗
+我们是穿梭在银河的火箭队
+白洞 白色的明天在等着我们
+就是这样 喵！！
+</textarea>
+==>
+<textarea id="selectedTextContent" style="width:300px; height:100px;"></textarea>
+</div>
+
+<script>
+    document.body.onmouseup = function () {
+		var selectionRange = window.getSelection();
+		var selectedTextContent = selectionRange.toString();
+
+		var o = document.getElementById("selectedTextContent");
+		o.value = selectedTextContent;
+    }
+</script>
+</body>
+</html>
