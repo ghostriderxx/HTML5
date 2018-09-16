@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Web Storage API example</title>
+    <style type="text/css">
+        html,body {
+            margin: 0;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper {
+            width: 70%;
+            background-color: rgb(250,250,250);
+            padding: 2rem;
+            position: relative;
+            border: 5px solid black;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            position: absolute;
+            left: 2rem;
+            top: -4rem;
+            color: rgb(250,250,250);
+            text-shadow: 0px -1px 1px black,
+            0px -2px 1px black,
+            0px -3px 1px black,
+            0px -4px 1px black,
+            0px -5px 1px black;
+        }
+
+        pre {
+            line-height: 1.5;
+            font-size: 1.2rem;
+        }
+
+        form {
+            width: 600px;
+        }
+
+        form > div{
+            padding: 5px;
+            display: flex;
+        }
+
+        .label{
+            width: 100px;
+            text-align: right;
+            padding-right: 20px;
+        }
+
+        .item{
+            flex:1;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h1>WEB STORAGE</h1>
+
+    <pre>
+既然你诚心诚意地问了！我就大发慈悲的告诉你！
+为了防止世界被破坏！为了维护世界的和平！
+贯彻爱与真实的邪 恶！
+可爱又迷人的反派角色！
+武藏！小次郎！
+我们是穿梭在银河中的火箭队!
+白洞，白色的明天在等着我们！
+就是这样，喵~
+    </pre>
+
+    <div style="display:flex; flex-direction: row; align-items: center;">
+        <img src="images/firefoxos.png">
+        <form>
+            <div>
+                <label class="label" for="bgcolor">背景色:</label>
+                <input class="item" type="color" id="bgcolor" value="#FF0000">
+            </div>
+            <div>
+                <label class="label" for="font">字体:</label>
+                <select class="item" id="font">
+                    <option value="'SimSun'" selected>宋体</option>
+                    <option value="'Microsoft YaHei'">微软雅黑</option>
+                    <option value="'KaiTi'">楷体</option>
+                </select>
+            </div>
+            <div>
+                <label class="label" for="image">图片:</label>
+                <select class="item" id="image">
+                    <option value="images/firefoxos.png" selected>狐狸</option>
+                    <option value="images/crocodile.png">鳄鱼</option>
+                    <option value="images/tortoise.png">海龟</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    if(!localStorage.getItem('__webstorage__state__')) {
+        saveStateToStorage();
+        restoreStateFromStorage();
+    } else {
+        restoreStateFromStorage();
+    }
+
+    document.getElementById('bgcolor').onchange =
+        document.getElementById('font').onchange =
+            document.getElementById('image').onchange = function(){
+                saveStateToStorage();
+                restoreStateFromStorage();
+            };
+
+    function saveStateToStorage(){
+        const state = {
+            bgcolor: document.getElementById('bgcolor').value,
+            font: document.getElementById('font').value,
+            image: document.getElementById('image').value
+        };
+
+        localStorage.setItem('__webstorage__state__', JSON.stringify(state));
+    }
+
+    function restoreStateFromStorage(){
+        const state = localStorage.getItem('__webstorage__state__');
+        const {
+            bgcolor,
+            font,
+            image,
+        } = JSON.parse(state);
+
+        document.getElementById('bgcolor').value = bgcolor;
+        document.getElementById('font').value = font;
+        document.getElementById('image').value = image;
+
+        document.querySelector('html').style.backgroundColor = bgcolor;
+        document.querySelector('pre').style.fontFamily = font;
+        document.querySelector('img').setAttribute('src', image);
+    }
+
+    window.addEventListener('storage', function(e) {
+        restoreStateFromStorage();
+    });
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Web Storage API example</title>
+</head>
+<body>
+    Counter: <span id="counter">0</span>
+    <br/>
+    <button id="dec">-</button>
+    <button id="inc">+</button>
+</body>
+<script>
+    if(!sessionStorage.getItem('__webstorage__state__')) {
+        saveStateToStorage();
+        restoreStateFromStorage();
+    } else {
+        restoreStateFromStorage();
+    }
+
+    document.getElementById('inc').onclick = function(){
+        document.getElementById('counter').innerText =
+            Number(document.getElementById('counter').innerText) + 1;
+        saveStateToStorage();
+        restoreStateFromStorage();
+    };
+    document.getElementById('dec').onclick = function(){
+        document.getElementById('counter').innerText =
+            Number(document.getElementById('counter').innerText) - 1;
+        saveStateToStorage();
+        restoreStateFromStorage();
+    };
+
+    function saveStateToStorage(){
+        const state = document.getElementById('counter').innerText;
+
+        sessionStorage.setItem('__webstorage__state__', state);
+    }
+
+    function restoreStateFromStorage(){
+        const state = sessionStorage.getItem('__webstorage__state__');
+
+        document.getElementById('counter').innerText = state;
+    }
+</script>
+</html>
