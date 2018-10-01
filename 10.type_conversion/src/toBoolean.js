@@ -25,3 +25,8 @@ console.log(Boolean("''"));
 console.log(Boolean({}));
 console.log(Boolean([]));
 console.log(Boolean(function () {}));
+
+// !!
+const a = [0, "", null, {}, [], NaN, "false", new Boolean(false)];
+const b = a.map(b => !!b);
+console.log(b);
