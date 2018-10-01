@@ -45,3 +45,6 @@ const c = { // toString 与 valueOf 都不返回基本数据类型
     }
 };
 console.log(String(c));
+
+const d = 42 .toString(); // 小坑，若42.toString()会产生错误，由于.被当做小数点处理了...
+console.log(d, typeof d);
