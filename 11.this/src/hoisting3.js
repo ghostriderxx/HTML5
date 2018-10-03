@@ -1,0 +1,4 @@
+foo();
+var foo = function () {
+    // ...
+};
