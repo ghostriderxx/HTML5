@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function foo(){
+        console.log(this.a);
+    }
+
+    var obj = {
+        a: 2,
+        foo: foo,
+    };
+
+    var bar = obj.foo;
+
+    var a = "oops, global";
+
+    bar();
+
+    setTimeout(obj.foo, 100);
+</script>
+</body>
+</html>
