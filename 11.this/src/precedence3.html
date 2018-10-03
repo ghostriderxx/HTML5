@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function Foo() {
+        this.getName = function () {
+            console.log(3);
+            return {
+                getName: getName
+            }
+        };
+        getName = function () {
+            console.log(1);
+        };
+        return this
+    }
+    Foo.getName = function () {
+        console.log(2);
+    };
+    Foo.prototype.getName = function () {
+        console.log(6);
+    };
+    var getName = function () {
+        console.log(4);
+    };
+    function getName() {
+        console.log(5);
+    }
+
+    // 请给出下面代码的运行结果
+    Foo.getName();
+    getName();
+    console.log(Foo())
+    Foo().getName();
+    getName();
+    new Foo.getName();
+    new Foo().getName();
+    new Foo().getName().getName();
+    new new Foo().getName();
+</script>
+</body>
+</html>
